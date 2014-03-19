@@ -23,6 +23,7 @@
 	{
 		
 		[ [SKPaymentQueue defaultQueue] addTransactionObserver: self];
+        
 		
 	}
 	
@@ -170,43 +171,43 @@
 -(NSString *)WorkOutSubsriptionInDays:(NSString*)theProductID{
     // Only 1 month to 1 Year subscription supported
     
-    if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecamb1week"] ){
+    if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecambipad1week"] ){
         
         return @"7";
         
     }
 
     
-  else  if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecamb1month"] ){
+  else  if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecambipad1month"] ){
         
         return @"31";
         
     }
     
-    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecamb3months"] ){
+    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecambipad3months"] ){
         
         return @"93";
         
     }
-    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecamb6months"] ){
+    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecambipad6months"] ){
         
         return @"186";
         
     }
     
-    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecamb9months"] ){
+    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecambipad9months"] ){
         
         return @"279";
         
     }
-    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecamb12months"] ){
+    else if ([[theProductID lowercaseString] isEqualToString:@"chemistryigcsecambipad12months"] ){
         
         return @"372";
         
     }
     
     else {
-        return @"Error";
+        return @"0";
     }
     
     
@@ -326,12 +327,12 @@
         if (buttonIndex == 1)
         {
             // Update Username and password in Database
-            for (UIView* view in actionSheet.subviews)
-            {
-                if ([view isKindOfClass:[UITextField class]])
-                {
-                    textField = (UITextField*)view;
-                    int TaggedAs = textField.tag;
+            //for (UIView* view in actionSheet.subviews)
+            //{
+              //  if ([view isKindOfClass:[UITextField class]])
+               // {
+               //     textField = (UITextField*)view;
+                   /* int TaggedAs = textField.tag;
                     if (TaggedAs == 1717) {
                         EmailAddress = [[NSString alloc] initWithString: textField.text == nil ? @"" : textField.text];
                         [textField resignFirstResponder];
@@ -340,11 +341,14 @@
                     {
                         Password = [[NSString alloc]initWithString:textField.text == nil ? @"" : textField.text];
                         [textField resignFirstResponder];
-                    }
+                    } */
                     
                    // break;
-                }
-            }
+            EmailAddress = [actionSheet textFieldAtIndex:0].text;
+            Password = [actionSheet textFieldAtIndex:1].text;
+            
+               // }
+            //}
 
             
             
@@ -453,7 +457,7 @@
                                                                                        kCFStringEncodingUTF8 ); */
          
        // NSLog(@"%@",encodedString);
-       // NSLog(@"%@",FullString);
+       //NSLog(@"%@",FullString);
         
         NSData* data=[FullString dataUsingEncoding:NSUTF8StringEncoding];
 
